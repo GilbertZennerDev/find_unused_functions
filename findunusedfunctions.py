@@ -1,14 +1,24 @@
-def findunusedfunctions(file):
-    content = open(file, "r").read().splitlines()
-    content = [line for line in content if '#' not in line]
-    # the idea is to check whether every line which has a
+# the idea is to check whether every line which has a
     # def bla also has a line where only
     # bla()
-    defs = [line for line in content if 'def ' in line]
-    defs = [line.split()[1] for line in defs]
-    defs = [part[:part.index('(')] for part in defs]
-    func_calls = [line[:line.index('(')] for line in content if '(' in line and 'def' not in line]
-    unused_funcs = [func for func in defs if func not in func_calls]
-    print(defs, func_calls, unused_funcs)
+
+def giveContent(filename):
+    content = open(filename, "r").read().splitlines()
+    return [line for line in content if '#' not in line]
+
+def giveDefs(content):
+    defs = [line.split()[1] for line in content if 'def ' in line]
+    return [part[:part.index('(')] for part in defs]
+
+def giveFuncCalls(content):
+    return [line[:line.index('(')] for line in content if '(' in line and 'def' not in line]
+
+def giveUnusedFuncs(defs, func_calls):
+    return [func for func in defs if func not in func_calls]
+
+def findunusedfunctions(filename):
+    content = giveContent(filename)
+    unused_funcs = giveUnusedFuncs(giveDefs(content), giveFuncCalls(content))
+    print("Unused Functions:", unused_funcs)
 
 if __name__ == "__main__": findunusedfunctions('testprogram.py')
