@@ -40,8 +40,6 @@ def find_unused_functions(content):
 	print("Unused Functions:", unused_funcs)
 
 if __name__ == "__main__":
-	#print(get_all_filenames())
-	find_unused_functions(combine_files(get_all_filenames()))
-	#ac = len(sys.argv)
-	#if ac > 1: find_unused_functions(combine_files(sys.argv[1:]))
-	#else: print('Give files in args'); exit()
+	ac = len(sys.argv)
+	if ac < 2: find_unused_functions(combine_files(get_all_filenames())); exit()
+	find_unused_functions(combine_files(sys.argv[1:]))
