@@ -1,16 +1,8 @@
-def bad():
+def jsontest():
+    pass
+def f1():
     pass
 
-def good():
-    pass
-
-def bla1():
-
-# def commented()
-
-good()
-good()
-
-good(bad())
-good(bad(bad()))
-good(bad(bad(bad(blatest(bla1())))))
+#jsontest()
+f1()
+#return getjson([{'id':str(i), 'name': jsontest(), 'languages' : getrndlanguages(), 'subjects' : getrndsubjects(), 'religion' : getrndreligion(), 'age' : getrnddata(18, 60), 'income': r.randint(1000, 5000), 'friends': getrnddata(0, 4), 'wheelchair': getrnddata(0, 1), 'literacy': getrnddata(70, 100)} for i in range(size)])
